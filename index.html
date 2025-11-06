@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course Management System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-blue-200 flex justify-center items-center h-screen">
+
+  <div class="bg-white p-10 rounded-2xl shadow-lg w-96">
+    <h1 class="text-2xl font-bold text-center mb-6 text-blue-700">Course Management System</h1>
+
+    <div class="space-y-3">
+      <input id="name" type="text" placeholder="Name" class="w-full p-2 border rounded" />
+      <input id="email" type="email" placeholder="Email" class="w-full p-2 border rounded" />
+      <input id="password" type="password" placeholder="Password" class="w-full p-2 border rounded" />
+      <select id="role" class="w-full p-2 border rounded">
+        <option value="">Select Role</option>
+        <option value="student">Student</option>
+        <option value="instructor">Instructor</option>
+      </select>
+
+      <button onclick="register()" class="bg-green-600 text-white w-full py-2 rounded hover:bg-green-700 transition">
+        Register
+      </button>
+
+      <p class="text-center text-gray-600">Already have an account?</p>
+
+      <button onclick="loginPage()" class="bg-blue-600 text-white w-full py-2 rounded hover:bg-blue-700 transition">
+        Go to Login
+      </button>
+    </div>
+
+    <p id="message" class="text-center text-sm mt-4 text-red-600"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

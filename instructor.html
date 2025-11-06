@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instructor Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+  <nav class="bg-green-700 text-white px-6 py-3 flex justify-between">
+    <h2 class="font-bold text-lg">Instructor Dashboard</h2>
+    <a href="index.html" class="hover:underline">Logout</a>
+  </nav>
+
+  <main class="p-6 grid md:grid-cols-2 gap-6">
+    <!-- Upload Material -->
+    <div class="bg-white p-5 rounded-xl shadow">
+      <h3 class="text-xl font-semibold mb-3">📚 Upload Course Material</h3>
+      <input type="file" class="border p-2 w-full mb-3" />
+      <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Upload</button>
+    </div>
+
+    <!-- Create Assignment -->
+    <div class="bg-white p-5 rounded-xl shadow">
+      <h3 class="text-xl font-semibold mb-3">📝 Create Assignment</h3>
+      <input type="text" placeholder="Assignment Title" class="border p-2 w-full mb-3" />
+      <textarea placeholder="Description" class="border p-2 w-full mb-3"></textarea>
+      <input type="date" class="border p-2 w-full mb-3" />
+      <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Create</button>
+    </div>
+  </main>
+</body>
+</html>

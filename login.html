@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | CMS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-blue-200 flex justify-center items-center h-screen">
+
+  <div class="bg-white p-10 rounded-2xl shadow-lg w-96">
+    <h1 class="text-2xl font-bold text-center mb-6 text-blue-700">Login</h1>
+
+    <input id="email" type="email" placeholder="Email" class="w-full mb-3 p-2 border rounded" />
+    <input id="password" type="password" placeholder="Password" class="w-full mb-5 p-2 border rounded" />
+
+    <button onclick="login()" class="bg-blue-600 text-white w-full py-2 rounded hover:bg-blue-700 transition">
+      Login
+    </button>
+
+    <p id="message" class="text-center text-sm mt-4 text-red-600"></p>
+  </div>
+
+  <script>
+    async function login() {
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const message = document.getElementById('message');
+
+      if (!email || !password) {
+        message.textContent = "⚠️ Email and password required.";
+        return;
+      }
+
+      try {
+        const res = await fetch('http://localhost:4000/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          message.textContent = data.message || "❌ Login failed.";
+          return;
+        }
+
+        // Save token
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+
+        // Redirect based on role
+        if (data.user.role === 'student') {
+          window.location.href = "student.html";
+        } else if (data.user.role === 'instructor') {
+          window.location.href = "instructor.html";
+        } else {
+          message.textContent = "⚠️ Unknown user role.";
+        }
+      } catch (err) {
+        message.textContent = "🚫 Server error.";
+        console.error(err);
+      }
+    }
+  </script>
+</body>
+</html>
